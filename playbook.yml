@@ -1,0 +1,14 @@
+---
+- name: Update web servers
+  hosts: localhost
+
+  tasks:
+  - name: print variables
+    ansible.builtin.debug:
+      msg: "Hola!!!!"
+  - name: print variables
+    ansible.builtin.debug:
+      msg: "Adios!!!!"
+  - name: print variables
+    ansible.builtin.debug:
+      msg: "Adios!!!!"
