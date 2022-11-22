@@ -35,7 +35,7 @@
     # Repository to check out -- YOU MUST CHANGE THIS
     # repo must contain a local.yml file at top level
     #repo_url: git://github.com/sfromm/ansible-playbooks.git
-    repo_url: SUPPLY_YOUR_OWN_GIT_URL_HERE
+    repo_url: git@github.com:hector-medina-nubosas/ansible2.git
 
   tasks:
 
