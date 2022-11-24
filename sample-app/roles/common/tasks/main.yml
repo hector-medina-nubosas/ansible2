@@ -1,4 +1,4 @@
 ---
 # tasks file for roles/common
 
-import_tasks: installation.yml
+- import_tasks: installation.yml
