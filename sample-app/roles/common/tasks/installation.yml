@@ -4,7 +4,7 @@
   shell:  apt install $(cat "{{ role_path }}/files/packages.txt") -y --allow-downgrades
 - name: Install docker=1.5-2 python package
   ansible.builtin.pip:
-    name: docker==1.5-2
+    name: docker
 - name: Generate packages-installed file.
   shell: dpkg -l | grep '^ii' | awk '{print $2 "=" $3}' > packages-installed.txt
 - name: Compare packages installed with repo packages.
