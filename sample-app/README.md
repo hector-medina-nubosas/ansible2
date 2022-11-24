@@ -1,0 +1,1 @@
+ansible-playbook main.yml --extra-vars "server_ip=$(ip r | grep /20 | grep eth0 | awk '{print $9}')"

@@ -1,0 +1,6 @@
+---
+- name: Apache web server config.
+  hosts: localhost
+  roles: 
+  - common      # Install common updates in ubuntu
+  - apache      # Run apache

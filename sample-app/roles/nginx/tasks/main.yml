@@ -1,0 +1,20 @@
+---
+# tasks file for roles/nginx
+- name: Get info of container
+  docker_container_info:
+    name: nginx
+  register: container
+
+- name: Does container exist?
+  debug:
+    msg: "The container {{ 'exists' if container.exists else 'does not exist' }}"
+
+- name: Generate index.html
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/default.conf.j2"
+    dest: "{{ role_path }}/files/default.conf"
+  when: container.exists == false
+
+- name: Run apache in docker
+  shell: "docker run -d -p 80:80 -v {{ role_path }}/files/default.conf:/etc/nginx/conf.d/default.conf --name nginx nginx"
+  when: container.exists == false

@@ -1,0 +1,20 @@
+---
+# tasks file for roles/apache
+- name: Get info of container
+  docker_container_info:
+    name: apache
+  register: container
+
+- name: Does container exist?
+  debug:
+    msg: "The container {{ 'exists' if container.exists else 'does not exist' }}"
+
+- name: Generate index.html
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/index.html.j2"
+    dest: "{{ role_path }}/files/index.html"
+  when: container.exists == false
+
+- name: Run apache in docker
+  shell: "docker run -d -p 80:80 -v {{ role_path }}/files/index.html:/var/www/html/index.html --name apache php:7.4-apache"
+  when: container.exists == false

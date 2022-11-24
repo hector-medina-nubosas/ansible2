@@ -1,0 +1,13 @@
+---
+# tasks file for roles/common
+- name: Install common packages.
+  shell:  apt install $(cat "{{ role_path }}/files/packages.txt") -y --allow-downgrades
+- name: Generate packages-installed file.
+  shell: dpkg -l | grep '^ii' | awk '{print $2 "=" $3}' > packages-installed.txt
+- name: Compare packages installed with repo packages.
+  ansible.builtin.raw: diff "{{ playbook_dir }}/packages-installed.txt" "{{ role_path }}/files/packages.txt"
+  register: diff_cmd
+  failed_when: diff_cmd.rc != 0
+- name: Remove packages-installed file if comparation is same.
+  shell: rm packages-installed.txt
+  when: diff_cmd.rc == 0
