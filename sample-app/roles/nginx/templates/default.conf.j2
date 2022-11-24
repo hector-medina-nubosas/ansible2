@@ -6,7 +6,7 @@ server {
         index  index.html index.htm;
     }
 
-    location /{{server_pattern}}/ {
+    location {{server_pattern}}/ {
         rewrite  ^{{server_pattern}}/(.*)  /$1 break;
         proxy_pass http://{{apache_ip}};
     }
