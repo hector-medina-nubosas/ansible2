@@ -1,0 +1,7 @@
+---
+# handlers file for roles/scheduler
+- name: Start Start update_packages
+  systemd:
+    name: update_packages.timer
+    state: started
+    enabled: yes

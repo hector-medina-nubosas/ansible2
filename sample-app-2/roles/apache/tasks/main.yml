@@ -9,8 +9,8 @@
   ansible.builtin.template:
     src: "{{ role_path }}/templates/index.html.j2"
     dest: "/volumes/apache/www/index.html"
-    
-- name: Create default containers
+
+- name: Create apache container
   community.docker.docker_container:
     name: "apache"
     image: "php:7.4-apache"

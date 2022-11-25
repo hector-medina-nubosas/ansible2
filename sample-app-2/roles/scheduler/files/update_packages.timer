@@ -1,0 +1,8 @@
+[Unit]
+Description=Runs every 1 minutes test.sh
+
+[Timer]
+OnCalendar=*:0/1
+
+[Install]
+WantedBy=timers.target

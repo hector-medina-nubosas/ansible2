@@ -1,0 +1,30 @@
+---
+# tasks file for roles/scheduler
+- name: Copy update service file to server
+  copy:
+    src: "{{ role_path }}/files/update/update_packages.service"
+    dest: "/etc/systemd/system"
+    owner: root
+    group: root
+  notify:
+    - Start update_packages
+
+- name: Copy update timer file to server
+  copy:
+    src: "{{ role_path }}/files/update/update_packages.timer"
+    dest: "/etc/systemd/system"
+    owner: root
+    group: root
+  notify:
+    - Start update_packages
+
+
+- name: Copy binary to server
+  copy:
+    src: "{{ role_path }}/files/update/update_packages.sh"
+    dest: "/root"
+    mode: 0755
+    owner: root
+    group: root
+  notify:
+    - Start teupdate_packagesst
