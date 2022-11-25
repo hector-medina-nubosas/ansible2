@@ -8,6 +8,7 @@
     group: root
   notify:
     - Start update_packages
+  tags: apache nginx
 
 - name: Copy update timer file to server
   copy:
@@ -17,14 +18,26 @@
     group: root
   notify:
     - Start update_packages
+  tags: apache nginx
 
-
-- name: Copy binary to server
+- name: Copy binary to apache server
   copy:
-    src: "{{ role_path }}/files/update/update_packages.sh"
+    src: "{{ role_path }}/files/update/apache/update_packages.sh"
     dest: "/root"
     mode: 0755
     owner: root
     group: root
   notify:
     - Start update_packages
+  tags: apache
+
+- name: Copy binary to nginx server
+  copy:
+    src: "{{ role_path }}/files/update/nginx/update_packages.sh"
+    dest: "/root"
+    mode: 0755
+    owner: root
+    group: root
+  notify:
+    - Start update_packages
+  tags: nginx
