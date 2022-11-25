@@ -3,6 +3,11 @@
   ansible.builtin.pip:
     requirements: "{{ role_path }}/files/installation/requirements.txt"
 - name: Install docker with apt.
+  become: true
   ansible.builtin.apt:
     name: docker
     state: present
+  register: docker
+- name: Print docker
+  debug:
+    msg: docker
