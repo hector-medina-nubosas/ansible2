@@ -10,4 +10,4 @@
   register: docker
 - name: Print docker
   debug:
-    msg: docker
+    msg: "{{ docker }}"
