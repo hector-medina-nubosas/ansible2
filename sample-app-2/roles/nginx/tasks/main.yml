@@ -2,20 +2,20 @@
 # tasks file for roles/nginx
 - name: Create directory for volume.
   ansible.builtin.file:
-    path: /volumes/nginx/
+    path: /volumes/nginx/conf.d
     state: directory
 
-- name: Generate index.html
+- name: Generate default.conf
   ansible.builtin.template:
-    src: "{{ role_path }}/templates/index.html.j2"
-    dest: "/volumes/apache/www/index.html"
+    src: "{{ role_path }}/templates/default.conf.j2"
+    dest: "/volumes/nginx/conf.d/default.conf"
 
-- name: Create apache container
+- name: Create nginx container
   community.docker.docker_container:
-    name: "apache"
-    image: "php:7.4-apache"
+    name: "nginx"
+    image: "nginx"
     state: started
     ports:
       - "80:80"
     volumes:
-      - "/volumes/apache/www:/var/www/html/"
+      - "/volumes/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf"
