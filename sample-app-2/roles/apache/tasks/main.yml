@@ -2,7 +2,7 @@
 # tasks file for roles/apache
 - name: Create directory for volume.
   ansible.builtin.file:
-    path: /volumes/nginx/
+    path: /volumes/apache/www/
     state: directory
 
 - name: Generate index.html
