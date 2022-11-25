@@ -1,5 +1,15 @@
 ---
 # tasks file for roles/apache
+- name: Create directory for volume.
+  ansible.builtin.file:
+    path: /volumes/apache/www
+    state: directory
+
+- name: Generate index.html
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/index.html.j2"
+    dest: "/volumes/apache/www/index.html"
+    
 - name: Create default containers
   community.docker.docker_container:
     name: "apache"
@@ -9,8 +19,3 @@
       - "80:80"
     volumes:
       - "/volumes/apache/www:/var/www/html/"
-      
-- name: Generate index.html
-  ansible.builtin.template:
-    src: "{{ role_path }}/templates/index.html.j2"
-    dest: "/volumes/apache/www/index.html"
