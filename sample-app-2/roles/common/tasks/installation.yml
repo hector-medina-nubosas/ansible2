@@ -7,7 +7,3 @@
   ansible.builtin.apt:
     name: docker.io=20.10.16-0ubuntu1
     state: present
-  register: docker
-- name: Print docker
-  debug:
-    msg: "{{ docker }}"
