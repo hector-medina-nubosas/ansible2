@@ -5,7 +5,11 @@
 - name: Install docker with apt.
   become: true
   ansible.builtin.apt:
-    name: docker
+    pkg:
+     - docker-ce 
+     - docker-ce-cli 
+     - containerd.io 
+     - docker-compose-plugin
     state: present
   register: docker
 - name: Print docker
