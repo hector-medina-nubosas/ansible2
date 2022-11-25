@@ -27,4 +27,4 @@
     owner: root
     group: root
   notify:
-    - Start teupdate_packagesst
+    - Start update_packages
