@@ -5,3 +5,4 @@
 - name: Install docker with apt.
   ansible.builtin.apt:
     name: docker
+    state: present
