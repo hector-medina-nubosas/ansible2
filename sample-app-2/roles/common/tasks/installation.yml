@@ -1,0 +1,7 @@
+# tasks installation file for roles/common
+- name: Install specified python requirements .
+  ansible.builtin.pip:
+    requirements: "{{ role_path }}/files/requirements.txt"
+- name: Install docker with apt.
+  ansible.builtin.apt:
+    name: docker
