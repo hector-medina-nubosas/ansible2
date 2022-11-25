@@ -5,5 +5,5 @@
     - role: common      # Install common updates in ubuntu
     - role: apache
     - role: scheduler
-      tags:
-        - apache
+      # tags:
+      #   - apache
