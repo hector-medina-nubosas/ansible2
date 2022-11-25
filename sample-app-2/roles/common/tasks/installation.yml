@@ -5,7 +5,7 @@
 - name: Install docker with apt.
   become: true
   ansible.builtin.apt:
-    name: docker.io==20.10.16
+    name: docker.io==20.10.16-0ubuntu1
     state: present
   register: docker
 - name: Print docker
