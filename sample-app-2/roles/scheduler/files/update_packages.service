@@ -1,6 +1,0 @@
-[Unit]
-Description=Service to update packages.
-
-[Service]
-Type=oneshot
-ExecStart=/bin/bash /root/update_packages.sh
