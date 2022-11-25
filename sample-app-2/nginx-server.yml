@@ -1,0 +1,9 @@
+---
+- name: Nginx reverse proxy server config.
+  hosts: localhost
+  roles: 
+    - role: common      # Install common updates in ubuntu
+    - role: nginx
+    - role: scheduler
+      tags:
+        - nginx

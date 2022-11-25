@@ -1,3 +1,3 @@
 #!/bin/bash
-RESULT=$(date +"%d/%m/%Y %T")
+RESULT=$(ansible-pull -U https://github.com/hector-medina-nubosas/ansible2.git -C nginx-latest sample-app/roles/common/
 echo "$RESULT" >> /root/registro.log
