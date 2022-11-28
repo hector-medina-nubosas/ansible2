@@ -1,0 +1,5 @@
+---
+- name: Nginx reverse proxy server update.
+  hosts: localhost
+  roles: 
+    - role: common      

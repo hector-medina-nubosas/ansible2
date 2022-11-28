@@ -1,0 +1,5 @@
+---
+- name: Apache web server update.
+  hosts: localhost
+  roles: 
+    - role: common
