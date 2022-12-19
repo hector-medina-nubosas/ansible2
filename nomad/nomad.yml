@@ -2,6 +2,7 @@
 - name: Install and configure nomad.
   hosts: localhost
   tasks:
-    - shell: echo 'hello nomad'
-      register: cmd_output
-    - debug: msg="Shell script from ansible {{ cmd_output }}"
+    - name: Import Hashicorp GPG key.
+      ansible.builtin.apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        state: present
