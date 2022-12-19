@@ -10,3 +10,7 @@
       ansible.builtin.apt_repository:
         repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
         state: present
+    - name: Install Hashicorp nomad
+      ansible.builtin.apt:
+        name: nomad
+        update_cache: yes
