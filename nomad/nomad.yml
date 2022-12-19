@@ -4,4 +4,4 @@
   tasks:
     - shell: echo 'hello nomad'
       register: cmd_output
-    - debug: msg="Shell script from ansible: {{ cmd_output }}"
+    - debug: msg="Shell script from ansible {{ cmd_output }}"
