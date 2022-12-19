@@ -11,7 +11,7 @@
 - name: Copy nomad config.
   copy:
     src: "{{ role_path }}/files/config.hcl"
-    dest: "/etc/nomad.d/config"
+    dest: "/etc/nomad.d/config/config.hcl"
     owner: root
     group: root
   notify:
