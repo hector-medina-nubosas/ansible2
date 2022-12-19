@@ -12,5 +12,6 @@
         state: present
     - name: Install Hashicorp nomad
       ansible.builtin.apt:
-        name: nomad
+        name: nomad=1.4.3-1
         update_cache: yes
+        allow_downgrade: yes
