@@ -8,5 +8,9 @@ server {
 }
 
 client {
-  enabled       = true
+  enabled   = true
+}
+
+ui {
+  enabled   = false
 }
