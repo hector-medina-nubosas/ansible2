@@ -1,0 +1,7 @@
+---
+- name: Install and configure nomad client.
+  hosts: localhost
+  roles: 
+    - role: installation  
+    - role: client    
+    - role: service
