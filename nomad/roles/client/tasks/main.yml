@@ -1,0 +1,8 @@
+---
+# tasks file for roles/client
+- name: Copy nomad config.
+  copy:
+    src: "{{ role_path }}/files/config.hcl"
+    dest: "/etc/nomad.d/config.hcl"
+    owner: root
+    group: root
