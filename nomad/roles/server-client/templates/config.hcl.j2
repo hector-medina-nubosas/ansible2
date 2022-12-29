@@ -30,7 +30,7 @@ server {
   server_join {
     retry_join = [{% for ip in server_join.value %}"{{ ip }}"{% if not loop.last %}, {% endif %} {% endfor %}]
   }
-
+    {% endif %}
 }
 
 client {
