@@ -32,7 +32,4 @@ client {
   memory_total_mb  = 1000
   cpu_total_compute = 1294
 
-  server_join {
-    retry_join = [{% for ip in server_join.value %}"{{ ip }}:4647"{% if not loop.last %}, {% endif %} {% endfor %}]
-  }
 }
