@@ -7,6 +7,7 @@ data_dir  = "/var/lib/nomad"
 bind_addr = "0.0.0.0" # the default
 
 addresses {
+  http  = "127.0.0.1 {{ ansible_eth1.ipv4.address }}"
   # Internal RPC communication between client agents and servers, and for inter-server traffic.
   rpc   = "{{ ansible_eth1.ipv4.address }}"   # Exposed only to other cluster members 
   # Serf propagation information between servers.
@@ -26,11 +27,11 @@ server {
   enabled          = true
   bootstrap_expect = 1
 
-  {% if server_join is defined %}
+{% if server_join is defined %}
   server_join {
     retry_join = [{% for ip in server_join.value %}"{{ ip }}"{% if not loop.last %}, {% endif %}{% endfor %}]
   }
-    {% endif %}
+{% endif %}
 }
 
 client {
@@ -38,9 +39,9 @@ client {
   memory_total_mb  = 1000
   cpu_total_compute = 1294
 
-  {% if server_join is defined %}
+{% if server_join is defined %}
   server_join {
     retry_join = [{% for ip in server_join.value %}"{{ ip }}:4647"{% if not loop.last %}, {% endif %}{% endfor %}]
   }
-  {% endif %}
+{% endif %}
 }
