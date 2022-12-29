@@ -27,6 +27,9 @@ server {
   enabled          = true
   bootstrap_expect = 1
 
+  # Encrypt gossip communication
+  encrypt          = "m6+hrtQJTVPU/gVnv4a4dg43AoxCqo4eYyEd1Po65Ro="
+  
 {% if server_join is defined %}
   server_join {
     retry_join = [{% for ip in server_join.value %}"{{ ip }}"{% if not loop.last %}, {% endif %}{% endfor %}]
