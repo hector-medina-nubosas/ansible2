@@ -25,6 +25,12 @@ advertise {
 server {
   enabled          = true
   bootstrap_expect = 1
+
+  {% if server_join != null %}
+  server_join {
+    retry_join = [{% for ip in server_join.value %}"{{ ip }}"{% if not loop.last %}, {% endif %} {% endfor %}]
+  }
+
 }
 
 client {
@@ -32,4 +38,9 @@ client {
   memory_total_mb  = 1000
   cpu_total_compute = 1294
 
+  {% if server_join != null %}
+  server_join {
+    retry_join = [{% for ip in server_join.value %}"{{ ip }}:4647"{% if not loop.last %}, {% endif %} {% endfor %}]
+  }
+  {% endif %}
 }
