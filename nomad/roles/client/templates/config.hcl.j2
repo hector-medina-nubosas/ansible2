@@ -15,10 +15,5 @@ advertise {
 }
 
 client {
-  enabled   = true
-
-  server_join {
-    retry_join = [{% for ip in server_join.value %}"{{ ip }}:4647"{% if not loop.last %}, {% endif %} {% endfor %}]
-  }
- 
+  enabled   = true 
 }
