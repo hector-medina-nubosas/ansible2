@@ -28,7 +28,7 @@ server {
 
   {% if server_join is defined %}
   server_join {
-    retry_join = [{% for ip in server_join.value %}"{{ ip }}"{% if not loop.last %}, {% endif %} {% endfor %}]
+    retry_join = [{% for ip in server_join.value %}"{{ ip }}"{% if not loop.last %}, {% endif %}{% endfor %}]
   }
     {% endif %}
 }
@@ -40,7 +40,7 @@ client {
 
   {% if server_join is defined %}
   server_join {
-    retry_join = [{% for ip in server_join.value %}"{{ ip }}:4647"{% if not loop.last %}, {% endif %} {% endfor %}]
+    retry_join = [{% for ip in server_join.value %}"{{ ip }}:4647"{% if not loop.last %}, {% endif %}{% endfor %}]
   }
   {% endif %}
 }
