@@ -1,8 +1,8 @@
 ---
 # tasks file for roles/server-client
-- name: Copy nomad config.
-  copy:
-    src: "{{ role_path }}/files/config.hcl"
+- name: Generate nomad config.
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/config.hcl.j2"
     dest: "/etc/nomad.d/config.hcl"
     owner: root
     group: root
