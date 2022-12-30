@@ -22,10 +22,11 @@ advertise {
 
 server {
   enabled          = true
+  # Para servers follower esto debería eliminarse.
   bootstrap_expect = 1
 
   # Encrypt gossip communication
-  encrypt          = "m6+hrtQJTVPU/gVnv4a4dg43AoxCqo4eYyEd1Po65Ro="
+ # encrypt          = "m6+hrtQJTVPU/gVnv4a4dg43AoxCqo4eYyEd1Po65Ro="
 
 {% if server_join is defined %}
   server_join {
