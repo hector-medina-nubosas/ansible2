@@ -5,5 +5,4 @@
     - role: installation   
     - role: server-client   
     - role: service
-  handlers:
-    - include_tasks: roles/service/handlers/main.yaml
+    - role: ingress

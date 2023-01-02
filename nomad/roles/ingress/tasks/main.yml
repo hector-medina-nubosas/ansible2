@@ -1,11 +1,10 @@
 ---
 # tasks file for roles/ingress
-# - name: Create ingress nginx job.
-#   community.general.nomad_job:
-#     host: localhost
-#     state: present
-#     content: "{{ lookup('ansible.builtin.file', '{{ role_path }}/files/nginx.hcl') }}"
-#     timeout: 120
-#     use_ssl: false
-- name: hola
-  ansible.builtin.debug: msg="hola"
+- meta: flush_handlers
+- name: Create ingress nginx job.
+  community.general.nomad_job:
+    host: localhost
+    state: present
+    content: "{{ lookup('ansible.builtin.file', '{{ role_path }}/files/nginx.hcl') }}"
+    timeout: 120
+    use_ssl: false
