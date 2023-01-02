@@ -15,7 +15,7 @@ job "nginx" {
             driver = "docker"
 	
             config {
-                image = "nginx"
+                image = "hectormedinanubosas/nginx-nomad:v1"
                 ports = [ "nginx-port" ]
                 network_mode = "host"
             }
