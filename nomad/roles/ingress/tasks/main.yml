@@ -1,5 +1,7 @@
 ---
 # tasks file for roles/ingress
+- name: Force nomad service handler to run.
+  ansible.builtin.meta: flush_handlers
 - name: Create ingress nginx job.
   community.general.nomad_job:
     host: localhost
