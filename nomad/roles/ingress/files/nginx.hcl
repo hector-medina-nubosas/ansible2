@@ -1,4 +1,4 @@
-job "nginx" {
+job "ingress" {
 
     datacenters = ["dc1"]
 
