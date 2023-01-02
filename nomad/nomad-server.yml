@@ -5,3 +5,4 @@
     - role: installation   
     - role: server   
     - role: service
+    - role: ingress
