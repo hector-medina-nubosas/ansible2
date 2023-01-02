@@ -13,12 +13,9 @@ addresses {
 
 advertise {
   http  = "{{ ansible_eth1.ipv4.address }}"
-  # Internal RPC communication between client agents and servers, and for inter-server traffic.
-  rpc   = "{{ ansible_eth1.ipv4.address }}"   # Exposed only to other cluster members
   # Serf propagation information between servers.
   serf  = "{{ ansible_eth1.ipv4.address }}"   # Exposed only to other cluster members
 }
-
 
 server {
   enabled          = true
