@@ -15,7 +15,7 @@ job "ingress" {
             driver = "docker"
 	
             config {
-                image = "hectormedinanubosas/nginx-nomad:v3"
+                image = "hectormedinanubosas/nginx-nomad:v4"
                 ports = [ "nginx-port" ]
                 network_mode = "host"
             }
