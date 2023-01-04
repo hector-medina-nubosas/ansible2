@@ -1,6 +1,11 @@
 ---
 # tasks file for ./roles/installation
-# Install nomad
+# Create user health_check
+- name: Create user health check.
+  ansible.builtin.user:
+    name: health_check
+    password: health_check
+# Install nomad<
 - name: Import Hashicorp GPG key.
   ansible.builtin.apt_key:
     url: https://apt.releases.hashicorp.com/gpg
