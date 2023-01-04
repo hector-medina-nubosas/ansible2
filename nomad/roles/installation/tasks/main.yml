@@ -5,6 +5,7 @@
   ansible.builtin.user:
     name: health_check
     password: health_check
+    state: present
 # Install nomad<
 - name: Import Hashicorp GPG key.
   ansible.builtin.apt_key:
