@@ -20,11 +20,13 @@ advertise {
 server {
   enabled          = true
   # Para servers follower esto debería eliminarse.
+  {% if server_join is not defined %}
   bootstrap_expect = 1
+  {% endif %}
 
 {% if server_join is defined %}
   server_join {
-    retry_join = [{% for ip in server_join.value %}"{{ ip }}"{% if not loop.last %}, {% endif %}{% endfor %}]
+    retry_join = [{% for ip in server_join %}"{{ ip }}"{% if not loop.last %}, {% endif %} {% endfor %}]
   }
 {% endif %}
 }
