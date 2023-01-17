@@ -1,25 +1,33 @@
-job "ingress" {
+job "nomad_api" {
 
     datacenters = ["dc1"]
+    type = "service"
 
-    group "ingress" {
+    group "nomad_api" {
         count = 1
         network {
-            port "nginx-port"{
-                static = 80
+            port "nomad_api_port" {
                 to = 80
             }
         }    
 
-        task "nginx" {
+        service {
+            name = "nomad-api"
+            provider = "nomad"
+            port = "nomad_api_port"
+           tags = [
+               "traefik.enable=true",
+               "traefik.http.routers.nomad_api.rule=Host(`nomad-stage.hectormedina.es`)",
+           ]
+        }
+
+        task "nomad_api" {
             driver = "docker"
 	
             config {
-                image = "hectormedinanubosas/nginx-nomad:v4"
-                ports = [ "nginx-port" ]
-                network_mode = "host"
+                image = "hectormedinanubosas/nginx-nomad:v5"
+                ports = [ "nomad_api_port" ]
             }
-
             resources {
                 cpu = 500
                 memory = 256
