@@ -1,0 +1,4 @@
+---
+# tasks file for roles/nomad-bootstrap
+- name: Create management token.
+  ansible.builtin.command: nomad acl bootstrap > /etc/nomad.d/acl_botstrap.txt
