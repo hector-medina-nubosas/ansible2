@@ -5,4 +5,4 @@
     - role: installation   
     - role: server-client   
     - role: service
-    - role: nomad-bootstrap
+    # - role: nomad-bootstrap
