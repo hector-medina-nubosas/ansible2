@@ -36,7 +36,7 @@ server {
 
 {% if server_num > 1 %}
   server_join {
-    retry_join = [ provider=digitalocean region=server_join.region tag_name=server_join.tags api_token=server_join.do_token ]
+    retry_join = [ provider=digitalocean region={% server_join.region %} tag_name={% server_join.tags %} api_token={% server_join.do_token %} ]
   }
 {% endif %}
 }
