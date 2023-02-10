@@ -29,14 +29,14 @@ advertise {
 
 server {
   enabled          = true
-  bootstrap_expect = {% server_num %}
+  bootstrap_expect = {{ server_num }}
 
   # Encrypt gossip communication
  # encrypt          = "m6+hrtQJTVPU/gVnv4a4dg43AoxCqo4eYyEd1Po65Ro="
 
 {% if server_num > 1 %}
   server_join {
-    retry_join = [ provider=digitalocean region={% server_join.region %} tag_name={% server_join.tags %} api_token={% server_join.do_token %} ]
+    retry_join = [ provider=digitalocean region={{ server_join.region }} tag_name={{ server_join.tags }} api_token={{ server_join.do_token }} ]
   }
 {% endif %}
 }
@@ -48,7 +48,7 @@ client {
   network_interface = "eth1"
 {% if server_num > 1 %}
   server_join {
-    retry_join = [ provider=digitalocean region={% server_join.region %} tag_name={% server_join.tags %} api_token={% server_join.do_token %} ]
+    retry_join = [ provider=digitalocean region={{ server_join.region }} tag_name={{ server_join.tags }} api_token={{ server_join.do_token }} ]
   }
 {% endif %}
 }
