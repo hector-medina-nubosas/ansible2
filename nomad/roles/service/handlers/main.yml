@@ -4,5 +4,4 @@
   systemd:
     name: nomad.service
     state: restarted
-    daemon_reload: true
     enabled: yes
