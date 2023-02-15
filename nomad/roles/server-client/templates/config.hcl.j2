@@ -15,9 +15,6 @@ server {
   enabled          = true
   bootstrap_expect = {{ server_num }}
 
-#  server_join {
-#    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
-#  }
 }
 
 client {
@@ -28,9 +25,7 @@ client {
   memory_total_mb  = {{ client_memory }}
   cpu_total_compute = {{ client_cpu }}
   network_interface = "{{ client_interface }}"
-#  server_join {
-#    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
-#  }
+
   server_join {
     retry_join = [ "{{ ansible_eth0.ipv4.address }}"]
   }
