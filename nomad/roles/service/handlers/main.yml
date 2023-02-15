@@ -3,5 +3,5 @@
 - name: Start nomad
   systemd:
     name: nomad.service
-    state: started
+    state: restarted
     enabled: yes
