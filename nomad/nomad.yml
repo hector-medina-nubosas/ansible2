@@ -3,16 +3,16 @@
   hosts: localhost
   roles: 
     - role: installation
-      tags: always
+      tags: [ always ]
 
     - role: nomad
-      tags: always
+      tags: [ always ]
 
     - role: server
-      tags: server
+      tags: [ server ]
     
     - role: client
-      tags: client
+      tags: [ client ]
     
     - role: service
-      tags: always
+      tags: [ always ]
