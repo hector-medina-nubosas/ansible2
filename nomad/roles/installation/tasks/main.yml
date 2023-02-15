@@ -27,7 +27,7 @@
     - docker.io
     update_cache: yes
     allow_downgrade: yes
-- name: Install python dependencies.
-  ansible.builtin.pip:
-    name:
-      - python-nomad
+# - name: Install python dependencies.
+#   ansible.builtin.pip:
+#     name:
+#       - python-nomad
