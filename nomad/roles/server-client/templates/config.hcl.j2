@@ -1,50 +1,37 @@
-ui {
-  enabled =  false
-}
+#ui {
+#  enabled =  false
+#}
 
 data_dir  = "/var/lib/nomad"
 
-bind_addr = "0.0.0.0" # the default
+bind_addr = "{{ ansible_eth0.ipv4.address }}"
+#bind_addr = "{{ ansible_eth1.ipv4.address }}"
 
-acl {
-  enabled = true
-}
-
-addresses {
-  http  = "127.0.0.1 {{ ansible_eth1.ipv4.address }}"
-  # Internal RPC communication between client agents and servers, and for inter-server traffic.
-  rpc   = "{{ ansible_eth1.ipv4.address }}"   # Exposed only to other cluster members 
-  # Serf propagation information between servers.
-  serf  = "{{ ansible_eth1.ipv4.address }}"   # Exposed only to other cluster members 
-}
-
-advertise {
-  http  = "{{ ansible_eth1.ipv4.address }}"
-  # Internal RPC communication between client agents and servers, and for inter-server traffic.
-  rpc   = "{{ ansible_eth1.ipv4.address }}"   # Exposed only to other cluster members
-  # Serf propagation information between servers.
-  serf  = "{{ ansible_eth1.ipv4.address }}"   # Exposed only to other cluster members
-}
-
+#acl {
+#  enabled = true
+#}
 
 server {
   enabled          = true
   bootstrap_expect = {{ server_num }}
 
-  # Encrypt gossip communication
- # encrypt          = "m6+hrtQJTVPU/gVnv4a4dg43AoxCqo4eYyEd1Po65Ro="
-
-  server_join {
-    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
-  }
+#  server_join {
+#    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
+#  }
 }
 
 client {
   enabled   = true
-  memory_total_mb  = 1000
-  cpu_total_compute = 1294
-  network_interface = "eth1"
+#  memory_total_mb  = 1000
+#  cpu_total_compute = 1294
+#  network_interface = "eth1"
+  memory_total_mb  = {{ client_memory }}
+  cpu_total_compute = {{ client_cpu }}
+  network_interface = "{{ client_interface }}"
+#  server_join {
+#    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
+#  }
   server_join {
-    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
+    retry_join = [ "{{ ansible_eth0.ipv4.address }}"]
   }
 }
