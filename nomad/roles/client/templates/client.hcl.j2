@@ -1,0 +1,17 @@
+client {
+  enabled   = true
+
+  {% if client_memory is defined %}
+  memory_total_mb  = {{ client_memory }}
+  {% endif %}
+
+  {% if client_cpu is defined %}
+  cpu_total_compute = {{ client_cpu }}
+  {% endif %}
+  
+  network_interface = "{{ client_interface }}"
+
+  server_join {
+    retry_join = [ "{{ ansible_eth0.ipv4.address }}"]
+  }
+}

@@ -1,0 +1,11 @@
+#ui {
+#  enabled =  false
+#}
+
+data_dir  = "/var/lib/nomad"
+
+bind_addr = "{{ ansible_eth0.ipv4.address }}"
+
+acl {
+  enabled = true
+}
