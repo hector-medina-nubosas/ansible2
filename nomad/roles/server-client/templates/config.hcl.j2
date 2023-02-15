@@ -29,19 +29,14 @@ advertise {
 
 server {
   enabled          = true
-  # Para servers follower esto debería eliminarse.
-  {% if server_join is not defined %}
-  bootstrap_expect = 1
-  {% endif %}
+  bootstrap_expect = {{ server_num }}
 
   # Encrypt gossip communication
  # encrypt          = "m6+hrtQJTVPU/gVnv4a4dg43AoxCqo4eYyEd1Po65Ro="
 
-{% if server_join is defined %}
   server_join {
-    retry_join = [{% for ip in server_join %}"{{ ip }}"{% if not loop.last %}, {% endif %} {% endfor %}]
+    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
   }
-{% endif %}
 }
 
 client {
@@ -49,9 +44,7 @@ client {
   memory_total_mb  = 1000
   cpu_total_compute = 1294
   network_interface = "eth1"
-{% if server_join is defined %}
   server_join {
-    retry_join = [{% for ip in server_join %}"{{ ip }}:4647"{% if not loop.last %}, {% endif %} {% endfor %}]
+    retry_join = [ "provider=digitalocean region={{ region }} tag_name={{ tags }} api_token={{ do_token }}" ]
   }
-{% endif %}
 }
