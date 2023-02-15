@@ -1,6 +1,6 @@
 ---
 # tasks file for roles/nomad
-- name: Generate nomad config.
+- name: Generate nomad general config.
   ansible.builtin.template:
     src: "{{ role_path }}/templates/nomad.hcl.j2"
     dest: "/etc/nomad.d/nomad.hcl"
