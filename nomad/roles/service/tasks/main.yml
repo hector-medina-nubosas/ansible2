@@ -1,10 +1,11 @@
 ---
 # tasks file for ./roles/service
 - name: Copy nomad service.
-  copy:
+  ansible.builtin.copy:
     src: "{{ role_path }}/files/nomad.service"
     dest: "/etc/systemd/system"
     owner: root
     group: root
+    mode: '0600'
   notify:
     - Start nomad

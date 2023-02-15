@@ -6,3 +6,4 @@
     dest: "/etc/nomad.d/nomad.hcl"
     owner: root
     group: root
+    mode: '0600'
